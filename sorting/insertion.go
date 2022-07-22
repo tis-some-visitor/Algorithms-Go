@@ -2,7 +2,6 @@ package sorting
 
 import (
 	"errors"
-	"log"
 )
 
 //InsertionSort sorts a slice of integers with O(n log n) efficiency..
@@ -27,9 +26,7 @@ func InsertionSort(data []int, order string) ([]int, error) {
 			for j := i; j > 0; j-- {
 
 				if eval(elm, j, data) {
-					log.Print(data[j], data[j-1])
 					data[j], data[j-1] = data[j-1], data[j]
-					log.Print(data[j], data[j-1])
 				}
 			}
 		}

@@ -86,8 +86,6 @@ func QuickSortWithFunc(list []int, order string) ([]int, error) {
 
 	if len(list) > 1 {
 
-		//x := list[0]
-
 		var x int
 
 		if len(list) > 1000 {
