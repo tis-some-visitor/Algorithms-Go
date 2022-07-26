@@ -1,33 +1,43 @@
 package sorting
 
-func MergeSort(list []int) (sorted []int) {
+//non-reqursive
+func MergeSortLoop(in []int) (out []int) {
 
-	var left = []int{}
-	var right = []int{}
+	var separated [][]int
+
+	//break an input slice into a slice of slices, each length 1
+	for _, elm := range in {
+
+		i := []int{elm}
+		separated = append(separated, i)
+	}
+
+	//until we have only 1 slice in our slice of slices:
+	//- cut off the first two elements
+	//- merge them
+	//- append our slice of slices with the result
+	for len(separated) > 1 {
+
+		merged := Merge(separated[0], separated[1])
+		separated = separated[2:]
+		separated = append(separated, merged)
+
+	}
+
+	return separated[0]
+}
+
+//reqursive
+func MergeSortReq(list []int) (sorted []int) {
 
 	if len(list) > 1 {
 
-		i := 0
-		j := len(list) - 1
-
-		for i <= j {
-
-			if i < j {
-				left = append(left, list[i])
-				right = append(right, list[j])
-				i++
-				j--
-			} else if i == j {
-				left = append(left, list[i])
-				i++
-			}
-		}
-		sorted = Merge(MergeSort(left), MergeSort(right))
+		j := len(list) / 2
+		return Merge(MergeSortReq(list[:j]), MergeSortReq(list[j:]))
 	} else {
-		sorted = list
+		return list
 	}
 
-	return sorted
 }
 
 func Merge(left []int, right []int) (merged []int) {
