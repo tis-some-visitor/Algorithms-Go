@@ -75,3 +75,12 @@ func BenchmarkMergeSortReq(b *testing.B) {
 		MergeSortReq(Arr)
 	}
 }
+
+//BenchmarkMerge-12    	    1750	    675373 ns/op	 4101407 B/op	      28 allocs/op
+func BenchmarkMerge(b *testing.B) {
+
+	for n := 0; n < b.N; n++ {
+		Merge(Arr[:len(Arr)/2], Arr[len(Arr)/2:])
+	}
+}
+

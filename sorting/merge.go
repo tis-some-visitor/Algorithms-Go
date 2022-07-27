@@ -1,5 +1,13 @@
 package sorting
 
+/*
+merge sort is valuable for very large sets of
+data because it divides the data in predictable ways. This allows us to divide the
+data into more manageable pieces ourselves, use merge sort to sort them, and
+then perform as many merges as necessary without having to keep the entire set
+of data in memory all at once.
+*/
+
 //non-reqursive
 func MergeSortLoop(in []int) (out []int) {
 
